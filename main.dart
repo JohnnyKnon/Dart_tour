@@ -10,5 +10,15 @@ void main() {
   dynamic anything = 'Hello';
   anything = 1;
   anything = false;
-  print(anything);
+  anything = 'Hello2';
+  print(anything); // Hello2 가 호출됨
+
+  // 데이터 타입이 String 인지 확인하는 if문
+  if (anything is String) {
+    // 해당 문자열의 길이를 가져오는 메서드 사용(이와 같이 해당 타입에 메서드를 바로 확인할 수 있게 서포트 해줌)
+    // 따라서 해당 블럭 내부는 dynamic이 아닌 String 타입으로 인식하여 서포트함
+    print(anything.length); // 6
+  }
+
+  // 이 외부는 dynamic 타입으로 인식하기 때문에 하나의 타입을 지정해서 서포트할 수 없음
 }
