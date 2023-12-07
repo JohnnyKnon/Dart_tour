@@ -9,5 +9,5 @@ void main() {
   // late 가 존재하는 var의 경우에는 print(age) 처럼 사용하게되면 에러를 호출함
   late var age;
 
-  print(age); // 오류가 남 null safety 같은 역할
+  print(age); // 오류가 남 null safety 같은 역할을 함
 }
