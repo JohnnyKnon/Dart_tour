@@ -1,18 +1,23 @@
-// Typedef -> 자료형이 헷갈릴 경우 사용하는 alias를 만드는 방법
-typedef ListOfInts = List<int>;
+// 대망의 class
+class Player {
+  final String name;
+  int xp;
 
-ListOfInts reverseListOfNumbers(ListOfInts list) {
-  var reversed = list.reversed;
-  return reversed.toList();
-}
+// Costructor
+  Player(this.name, this.xp);
 
-typedef UserInfo = Map<String, String>;
-
-String sayHi(UserInfo userInfo) {
-  return "Hi ${userInfo['name']}";
+  void sayHello() {
+    var name = "여기는 내부 변수";
+    print(
+        'Hi my name is ${this.name}'); // this.name 도 되지만, class property와 variable이 겹치지 않는이상 this를 사용하지 않음
+  }
 }
 
 void main() {
-  print(reverseListOfNumbers([1, 2, 3, 4]));
-  print(sayHi({"name": "mana"}));
+  var player = Player("Johnny", 2000);
+  print(player.name);
+  player.sayHello();
+  var player2 = Player("Manaka", 99999);
+  print(player2.name);
+  player2.sayHello();
 }
