@@ -1,28 +1,9 @@
-// Normal Parameters
-String sayHello(String name, int age, String country) {
-  return "Hello $name, you are $age, and you come from $country";
-}
-
-// Named Parameters
-// Null Safety 가 적용되어있어서 아래와 같은 방식으로 대처해야 문제 없음
-// Default Values 설정
-String sayHello2(
-    {String name = 'anon', int age = 99, String country = 'wakanda'}) {
-  return "Hello $name, you are $age, and you come from $country";
-}
-
-// Named Parameters
-// Null Safety 가 적용되어있어서 아래와 같은 방식으로 대처해야 문제 없음
-// required 로 필수요소로 만들면됨
-String sayHello3(
-    {required String name, required int age, required String country}) {
-  return "Hello $name, you are $age, and you come from $country";
-}
-
+// Optional Positional Parameters
+// 잠깐! 여기서 Positional Parameters가 의미하는건 뭘까?
+// Positional Parameters는 Named Paramters가 아닌 인수를 매개변수 순서에 맞추어서 정렬시켜야되는 방식입니다.
+// Optional Positional Parameters는 말그대로 Optional로 만드는 겁니다. 기본 Positional은 required 되어있는 상태이기 때문입니다.
+String sayHello(String name, int age, [String? country = 'Japan']) =>
+    "Hello $name, you are $age years old from $country";
 void main() {
-  // Named Argument 사용하기전에는 함수 프린트
-  print(sayHello('mana', 20, 'Japan'));
-  // Named Argument 사용 후
-  print(sayHello2(age: 20, name: 'Sungmin', country: 'Korea'));
-  print(sayHello3(age: 20, name: 'jiyoon', country: 'Korea'));
+  print(sayHello('Min', 20));
 }
