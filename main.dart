@@ -1,9 +1,29 @@
-// Optional Positional Parameters
-// 잠깐! 여기서 Positional Parameters가 의미하는건 뭘까?
-// Positional Parameters는 Named Paramters가 아닌 인수를 매개변수 순서에 맞추어서 정렬시켜야되는 방식입니다.
-// Optional Positional Parameters는 말그대로 Optional로 만드는 겁니다. 기본 Positional은 required 되어있는 상태이기 때문입니다.
-String sayHello(String name, int age, [String? country = 'Japan']) =>
-    "Hello $name, you are $age years old from $country";
+// QQ Operator
+String capitalizeName1(String? name) {
+  if (name != null) {
+    // if문 방식
+    return name.toUpperCase();
+  } else {
+    return "ANON";
+  }
+}
+
+String capitalizeName2(String? name) =>
+    name != null ? name.toUpperCase() : "ANON"; // 삼항 연산자 방식
+
+String capitalizeName3(String? name) =>
+    name?.toUpperCase() ??
+    'ANON'; // QQ방싣 여기서 name? 을 해준이유는 .toUpperCase 메소드 실행이 null 이면 안되기 때문에 null 이면 null -> ANON이 되는 형태
+// Left ?? Right 가 있다면 Left가 null 이면 Right가 실행되는 로직
+
 void main() {
-  print(sayHello('Min', 20));
+  capitalizeName1('nico'); // NICO
+  capitalizeName2(null); // ANON
+  capitalizeName3('hong'); // HONG
+
+  // QQ equals or QQ assignment operator
+  String? nickname;
+  nickname ??=
+      'ANON'; // 먼저나온 QQ equals에서 이미 null 이 걸러지기 때문에 하단에 지정한 QQ equals는 작동X
+  nickname ??= 'another';
 }
