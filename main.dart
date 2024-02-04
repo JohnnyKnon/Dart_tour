@@ -1,13 +1,10 @@
 // 대망의 class
 class Player {
-  final String name;
+  String name;
   int xp;
   String team;
 
-  Player.fromJson(Map<String, dynamic> playerJson)
-      : name = playerJson['name'],
-        xp = playerJson['xp'],
-        team = playerJson['team'];
+  Player({required this.name, required this.xp, required this.team});
 
   void sayHello() {
     var name = "여기는 내부 변수";
@@ -17,14 +14,14 @@ class Player {
 }
 
 void main() {
-  var apiData = [
-    {"name": "nico", "team": "red", "xp": 0},
-    {"name": "Johnny", "team": "blue", "xp": 0},
-    {"name": "Jiyoon", "team": "green", "xp": 0}
-  ];
+  var nico = Player(name: 'nico', xp: 20, team: 'red')
+    ..name = 'las'
+    ..xp = 10000
+    ..team = 'blue'; // Cascade Notation -> .. 두번으로 nico 라는 변수를 가리키고 있음
 
-  apiData.forEach((playerJson) {
-    var player = Player.fromJson(playerJson);
-    player.sayHello();
-  });
+  var johnny = Player(name: 'Johnny', xp: 2000, team: 'blue');
+  var hong = johnny
+    ..name = 'Johnny Hong'
+    ..xp = 3000
+    ..team = 'red'; // 즉, 앞에 class가 있다면 곧바로 그 class를 가리키게됨
 }
