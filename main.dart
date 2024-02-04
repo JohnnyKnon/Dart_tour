@@ -1,18 +1,28 @@
-// Dart 의 함수는 함수타입 함수명(타입 파라미터명) 형태로 구성되며
-// return 값이 없는 경우 void 이다.
-void sayHello(String name) {
-  print("Hello $name nice to meet you!");
+// Normal Parameters
+String sayHello(String name, int age, String country) {
+  return "Hello $name, you are $age, and you come from $country";
 }
 
-String makeCute(String name) {
-  return "$name 왔쪄욤!";
+// Named Parameters
+// Null Safety 가 적용되어있어서 아래와 같은 방식으로 대처해야 문제 없음
+// Default Values 설정
+String sayHello2(
+    {String name = 'anon', int age = 99, String country = 'wakanda'}) {
+  return "Hello $name, you are $age, and you come from $country";
 }
 
-// 한줄로 끝나는 함수의 경우 => 를 통해서 바로 리턴가능
-int calc(int num, int num2) => num + num2;
+// Named Parameters
+// Null Safety 가 적용되어있어서 아래와 같은 방식으로 대처해야 문제 없음
+// required 로 필수요소로 만들면됨
+String sayHello3(
+    {required String name, required int age, required String country}) {
+  return "Hello $name, you are $age, and you come from $country";
+}
 
 void main() {
-  sayHello('Min');
-  print(makeCute('Mana'));
-  print(calc(8, 2));
+  // Named Argument 사용하기전에는 함수 프린트
+  print(sayHello('mana', 20, 'Japan'));
+  // Named Argument 사용 후
+  print(sayHello2(age: 20, name: 'Sungmin', country: 'Korea'));
+  print(sayHello3(age: 20, name: 'jiyoon', country: 'Korea'));
 }
