@@ -1,20 +1,18 @@
-void main() {
-  // Set
-  var numbers = {1, 2, 3, 4};
-  // Set 타입 지정
-  Set<int> numbersTwo = {1, 2, 3, 4};
-  numbersTwo.add(1);
-  numbersTwo.add(1);
-  numbersTwo.add(5);
-  print(numbersTwo);
-  // {1,2,3,4, 5}
-  // 리스트일 경우에는 그대로 추가되겠지만, Set은 기본 구조는 List와 동일하지만, 모든 요소가 유니크해야됨
-  List<int> numbersThree = [1, 2, 3, 4];
-  numbersThree.add(1);
-  numbersThree.add(1);
-  numbersThree.add(1);
-  print(numbersThree);
-  // {1,2,3,4,1,1,1}
+// Dart 의 함수는 함수타입 함수명(타입 파라미터명) 형태로 구성되며
+// return 값이 없는 경우 void 이다.
+void sayHello(String name) {
+  print("Hello $name nice to meet you!");
+}
 
-  //요소가 중복ㄷ되지 않고 유니크한 값으로 유지하려면 Set 아니면 List
+String makeCute(String name) {
+  return "$name 왔쪄욤!";
+}
+
+// 한줄로 끝나는 함수의 경우 => 를 통해서 바로 리턴가능
+int calc(int num, int num2) => num + num2;
+
+void main() {
+  sayHello('Min');
+  print(makeCute('Mana'));
+  print(calc(8, 2));
 }
